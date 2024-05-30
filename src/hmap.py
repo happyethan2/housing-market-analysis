@@ -45,7 +45,7 @@ gdf_merged = gdf.merge(df_latest, left_on='suburb', right_on='suburb')
 # Set up plot
 fig, ax = plt.subplots(1, figsize=(12, 12))
 fig.canvas.manager.set_window_title(f'adelaide_house_prices_{datetime.now().strftime("%d%b%Y")}')
-ax.set_title('Adelaide Median Housing Prices (A$)')
+ax.set_title(f'Adelaide Median Housing Prices {datetime.now().strftime("%d %b %Y")}')
 
 plt.xlim(138.4, 139.0)
 plt.ylim(-35.3, -34.6)
@@ -54,28 +54,35 @@ plt.xlabel('Longitude')
 plt.ylabel('Latitude')
 
 # Define the colormap
-cmap = plt.get_cmap('YlOrRd')
+cmap = plt.get_cmap('coolwarm')
 
-# Define the normalization. The gamma parameter controls the emphasis.
-# A value less than 1 will emphasize the higher values (more yellow).
+# define the normalization. The gamma parameter controls the emphasis.
+# a value less than 1 will emphasize the higher values (more yellow).
 norm = PowerNorm(gamma=0.8, vmin=gdf_merged['price'].min(), vmax=gdf_merged['price'].max())
 
-# Plot the heatmap using the colormap and normalization
+# plot the heatmap using the colormap and normalization
 gdf_merged.plot(column='price', cmap=cmap, linewidth=0.8, edgecolor='0.8', ax=ax, legend=False, norm=norm)
 
-# Add colorbar with dollar values
+# add colorbar with dollar values
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 sm._A = []
 cbar = fig.colorbar(sm, ax=ax, format=FuncFormatter(lambda x, pos: f"${x:,.0f}"))
 
 
-# List of suburbs you want to label
+# list of suburbs to label (same as your previous script)
 suburbs_to_label = ['unley', 'glenelg', 'woodville', 'elizabeth', 'noarlunga',
                     'salisbury', 'kilburn', 'adelaide', 'athelstone', 'plympton', 
                     'morphett vale', 'belair', 'henley beach', 'brighton', 'north haven', 
                     'bowden', 'angle vale', 'stirling', 'gepps cross', 'banksia park',
                     'klemzig', 'pooraka', 'magil', 'happy valley', 'hallet cove',
-                    'semaphore', 'mawson lakes', 'seaford', 'aldinga', 'tennyson']
+                    'semaphore', 'mawson lakes', 'seaford', 'aldinga', 'tennyson',
+                    'oakbank', 'mount barker', 'woodside', 'flagstaff hill',
+                    'glenelg', 'cheltenham', 'modbury', 'hallett cove', 'crafers', 'blackwood', 
+                    'seaview downs', 'salisbury', 'salisbury park',
+                    'elizabeth', 'elizabeth park', 'elizabeth downs', 'edinburgh', 'largs bay',
+                    'ferredyn park', 'findon', 'fulham', 'glenelg', 'grange', 'glanville', 'glenelg north',
+                    'mile end', 'millswood', 'north adelaide', 'norwood',
+                    'medindie', 'walkerville', 'prospect', 'burnside', 'glenside', 'glenunga',]
 
 # Loop through the GeoDataFrame and add labels for the selected suburbs
 for index, row in gdf_merged.iterrows():
@@ -83,6 +90,6 @@ for index, row in gdf_merged.iterrows():
         x = row['geometry'].centroid.x
         y = row['geometry'].centroid.y
         plt.text(x, y, row['suburb'], fontsize=9)
-        plt.scatter(x, y, color='black', s=2) # add dots next to lables
+        plt.scatter(x, y, color='black', s=2)  # Add dots next to labels
 
 plt.show()
