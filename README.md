@@ -89,3 +89,36 @@ This script generates a heatmap visualization of the percentage change in housin
 
 #### Usage
 Ensure all dependencies are installed, and data files are correctly formatted and located. The script is designed to be flexible, allowing for modifications in the selection of suburbs to label or the range of data to visualize.
+
+
+## Handling Shapefiles
+
+### Extracting `shapefiles.zip`
+
+The repository includes a zipped archive of geographic shapefiles needed for the heatmap visualizations. To properly use these shapefiles, you need to extract them into the specific directory required by the scripts.
+
+1. **Locate the Archive**:
+   - Find the `shapefiles.zip` file at the root level of this repository.
+
+2. **Extract the Archive**:
+   - You need to extract the contents of this zip file into the `/src/shapefiles/` directory within this repository.
+
+### Extraction Steps
+
+Depending on your operating system, you can extract the archive using built-in tools or third-party applications:
+
+#### Windows
+- Right-click the `shapefiles.zip` file.
+- Choose "Extract All...".
+- In the dialog that opens, enter or browse to the path for `/src/shapefiles/` within your local copy of the repository.
+- Click 'Extract'.
+
+#### macOS
+- Double-click the `shapefiles.zip` file.
+- Files will automatically extract to the same location as the zip file.
+- Move the extracted folder to `/src/shapeholes/` within your repository.
+
+#### Linux
+- You can use the command line:
+  ```bash
+  unzip shapefiles.zip -d /path/to/repository/src/shapefiles/
