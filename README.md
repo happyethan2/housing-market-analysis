@@ -6,8 +6,8 @@ Tool showcasing various scripts used to search for, store and generate analytics
 ### Installing Chromedriver
 
 1. **Download Chromedriver:**
-   - Visit the [Chromedriver download page](https://sites.google.com/a/chromium.org/chromedriver/downloads) and download the version that matches your installed Chrome browser.
-   - Extract the downloaded file and place it in a directory within your repository, e.g., `D:\Git Repositories\real-estate-scraper\drivers\chromedriver.exe`.
+   - Visit the [chromedriver download page](https://developer.chrome.com/docs/chromedriver/downloads) and download the version that matches your installed Chrome browser.
+   - Extract the downloaded file and place it in a directory within your repository, e.g., `C:\housing-market-analysis\drivers\chromedriver.exe`.
 
 2. **Add Chromedriver to Path in Script:**
    - Ensure the `driver_path` in your script points to the location of `chromedriver.exe`.
@@ -21,8 +21,8 @@ Tool showcasing various scripts used to search for, store and generate analytics
 
 ### Saving DataFrame to CSV
 
-- Ensure the `Data` directory exists at the same level as your script.
-- Modify your script to save the DataFrame to a CSV, e.g., within the `Data` directory.
+- Ensure the `data` directory exists at the same level as your script.
+- Modify your script to save the DataFrame to a CSV, e.g., within the `data` directory.
 
 ## Script Descriptions
 
